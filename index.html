@@ -1,116 +1,380 @@
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desa Singa Raya</title>
-    <style>
-        * {margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif;}
-        body {background: #f0f8f0; color: #333;}
-        
-        /* Tombol Halaman */
-        .nav {background: #2d6a4f; padding: 15px; text-align: center;}
-        .nav a {display: inline-block; color: white; text-decoration: none; padding: 10px 15px; margin: 5px; background: #40916c; border-radius: 5px;}
-        .nav a:hover {background: #52b788;}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desa Singa Raya - Kecamatan Semparuk, Kabupaten Sambas</title>
+  <style>
+    /* Variabel Warna & Reset Dasar */
+    :root {
+      --primary: #1e3a8a;
+      --secondary: #3b82f6;
+      --accent: #f59e0b;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --text-light: #f8fafc;
+    }
 
-        /* Isi Halaman */
-        .halaman {padding: 30px; max-width: 800px; margin: auto; display: none;}
-        #beranda {display: block;}
-        
-        h1 {color: #2d6a4f; text-align: center; margin-bottom: 20px;}
-        .card {background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 15px;}
-        footer {background: #2d6a4f; color: white; text-align: center; padding: 15px; margin-top: 30px;}
-    </style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f5f9;
+      color: #334155;
+      line-height: 1.6;
+    }
+
+    /* Header & Navigasi */
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow);
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.25rem;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+      text-transform: capitalize;
+    }
+
+    nav a:hover, nav a.active {
+      color: var(--accent);
+    }
+
+    /* Hero Section (Beranda) */
+    .hero {
+      background: linear-gradient(rgba(30, 58, 138, 0.85), rgba(30, 58, 138, 0.85)), url('desa-singaraya.jpg') center/cover;
+      color: white;
+      text-align: center;
+      padding: 6rem 1rem;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    /* Layout Umum Container & Section */
+    .section-container {
+      padding: 4rem 1rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .page-title {
+      text-align: center;
+      color: var(--primary);
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      position: relative;
+    }
+
+    .page-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      margin: 0.5rem auto 0;
+      border-radius: 2px;
+    }
+
+    /* Cards & Grid Layout */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      border-top: 4px solid var(--secondary);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Pejabat / Perangkat Desa */
+    .pejabat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .pejabat-card {
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      border: 1px solid #e2e8f0;
+    }
+
+    .pejabat-card .jabatan {
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    .pejabat-card .nama {
+      color: var(--primary);
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    .sub-heading {
+      margin-top: 2.5rem;
+      color: var(--primary);
+      font-size: 1.4rem;
+    }
+
+    /* Galeri Foto */
+    .gallery-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .gallery-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+      box-shadow: var(--shadow);
+      margin-top: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--primary);
+      color: var(--text-light);
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 4rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<!-- 🧭 MENU NAVIGASI -->
-<div class="nav">
-    <a href="#beranda" onclick="tampilHalaman('beranda')">Beranda</a>
-    <a href="#profil" onclick="tampilHalaman('profil')">Profil Desa</a>
-    <a href="#pemerintahan" onclick="tampilHalaman('pemerintahan')">Pemerintahan</a>
-    <a href="#potensi" onclick="tampilHalaman('potensi')">Potensi Desa</a>
-    <a href="#kontak" onclick="tampilHalaman('kontak')">Kontak</a>
-</div>
+  <!-- Header & Navigasi -->
+  <header>
+    <div class="logo">DESA SINGA RAYA</div>
+    <nav>
+      <ul>
+        <li><a href="#beranda" class="active">Beranda</a></li>
+        <li><a href="#pemerintahan">Pemerintahan</a></li>
+        <li><a href="#potensi">Potensi Desa</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+        <li><a href="#poto">Galeri Foto</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<!-- 🏠 HALAMAN 1: BERANDA -->
-<div class="halaman" id="beranda">
-    <h1>🏡 Selamat Datang di Desa Singa Raya</h1>
-    <div class="card">
-        <p style="text-align:center; font-size:18px; line-height:1.8;">
-            Desa Singa Raya terletak di Kecamatan Semparuk, Kabupaten Sambas,<br>
-            Provinsi Kalimantan Barat. Desa kami dikenal dengan lingkungannya<br>
-            yang asri, masyarakatnya ramah, dan kehidupan yang damai.
-        </p>
+  <!-- Bagian Beranda -->
+  <section id="beranda" class="hero">
+    <h1>Selamat Datang di Desa Singa Raya</h1>
+    <p>Kecamatan Semparuk, Kabupaten Sambas, Kalimantan Barat</p>
+  </section>
+
+  <main class="section-container" style="padding-top: 2rem;">
+    <h2 class="page-title">Sekilas Desa</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Tata Kelola Transparan</h3>
+        <p>Pemerintahan Desa Singa Raya mengutamakan pelayanan masyarakat yang akuntabel, inovatif, dan responsif dalam memenuhi kebutuhan warga.</p>
+      </div>
+      <div class="card">
+        <h3>Kawasan Agraris</h3>
+        <p>Dikelilingi oleh hamparan lahan pertanian produktif dan perkebunan yang menjadi tumpuan ekonomi masyarakat lokal.</p>
+      </div>
+      <div class="card">
+        <h3>Budaya & Gotong Royong</h3>
+        <p>Menjaga kelestarian budaya Melayu Sambas serta menjunjung tinggi nilai kegotongroyongan dalam setiap pembangunan desa.</p>
+      </div>
     </div>
-</div>
+  </main>
 
-<!-- 📋 HALAMAN 2: PROFIL DESA -->
-<div class="halaman" id="profil">
-    <h1>📋 Profil Desa Singa Raya</h1>
-    <div class="card">
-        <p><strong>Nama Desa:</strong> Singa Raya</p>
-        <p><strong>Kecamatan:</strong> Semparuk</p>
-        <p><strong>Kabupaten:</strong> Sambas</p>
-        <p><strong>Provinsi:</strong> Kalimantan Barat</p>
-        <p><strong>Luas Wilayah:</strong> ± 1.500 Ha</p>
-        <p><strong>Jumlah Penduduk:</strong> ± 2.500 Jiwa</p>
-        <p><strong>Batas Wilayah:</strong> Sebelah utara berbatasan dengan Desa Sejahtera, sebelah selatan berbatasan dengan Sungai Raya</p>
+  <!-- Bagian Pemerintahan -->
+  <section id="pemerintahan" class="section-container">
+    <h2 class="page-title">Struktur Pejabat & Perangkat Desa</h2>
+
+    <h3 class="sub-heading">Pimpinan Desa</h3>
+    <div class="pejabat-grid">
+      <div class="pejabat-card">
+        <div class="jabatan">Kepala Desa</div>
+        <div class="nama">ALDER, S.H., M.Kn.</div>
+      </div>
+      <div class="pejabat-card">
+        <div class="jabatan">Sekretaris Desa</div>
+        <div class="nama">DENI IRAWAN</div>
+      </div>
     </div>
-</div>
 
-<!-- 🏛️ HALAMAN 3: PEMERINTAHAN DESA -->
-<div class="halaman" id="pemerintahan">
-    <h1>🏛️ Pemerintahan Desa</h1>
-    <div class="card">
-        <p><strong>Kepala Desa:</strong> Bpk. Ahmad Surya</p>
-        <p><strong>Sekretaris Desa:</strong> Ibu Siti Aminah</p>
-        <p><strong>Kepala Urusan Pemerintahan:</strong> Bpk. M. Ali</p>
-        <p><strong>Kepala Urusan Kesejahteraan:</strong> Ibu Rina Kartika</p>
-        <p><strong>Alamat Kantor Desa:</strong> Jl. Raya Singa Raya, Desa Singa Raya, Kec. Semparuk, Kab. Sambas</p>
+    <h3 class="sub-heading">Kasi & Kaur Desa</h3>
+    <div class="pejabat-grid">
+      <div class="pejabat-card">
+        <div class="jabatan">Kasi Pemerintahan</div>
+        <div class="nama">RUSMINA, S.Sos.</div>
+      </div>
+      <div class="pejabat-card">
+        <div class="jabatan">Kasi Pelayanan</div>
+        <div class="nama">EKO JUNIARTO, S.H.</div>
+      </div>
+      <div class="pejabat-card">
+        <div class="jabatan">Kasi Kesejahteraan</div>
+        <div class="nama">IVAN HARTAWIJAYA, S.T.</div>
+      </div>
+      <div class="pejabat-card">
+        <div class="jabatan">Kaur Tata Usaha & Umum</div>
+        <div class="nama">SUHARTIKA</div>
+      </div>
+      <div class="pejabat-card">
+        <div class="jabatan">Kaur Keuangan</div>
+        <div class="nama">RINTI MANDASARI</div>
+      </div>
+      <div class="pejabat-card">
+        <div class="jabatan">Kaur Perencanaan</div>
+        <div class="nama">NAIM ALANSORI, S.E.</div>
+      </div>
     </div>
-</div>
 
-<!-- 🌾 HALAMAN 4: POTENSI DESA -->
-<div class="halaman" id="potensi">
-    <h1>🌾 Potensi Desa</h1>
-    <div class="card">
-        <p>✅ <strong>Pertanian:</strong> Padi, Jagung, Ubi Kayu</p>
-        <p>✅ <strong>Perkebunan:</strong> Kelapa Sawit, Karet</p>
-        <p>✅ <strong>Sumber Daya Alam:</strong> Lahan subur dan air yang melimpah</p>
-        <p>✅ <strong>Wisata:</strong> Pemandangan alam yang indah, sungai jernih</p>
-        <p>✅ <strong>Produk Unggulan:</strong> Kerajinan tangan dan hasil bumi segar</p>
+    <h3 class="sub-heading">Kepala Dusun (Kadus)</h3>
+    <div class="pejabat-grid">
+      <div class="pejabat-card">
+        <div class="jabatan">Kepala Dusun Pelaik</div>
+        <div class="nama">ERNAWI</div>
+      </div>
+      <div class="pejabat-card">
+        <div class="jabatan">Kepala Dusun Simpuan</div>
+        <div class="nama">FIHARBI</div>
+      </div>
+      <div class="pejabat-card">
+        <div class="jabatan">Kepala Dusun Surabaya</div>
+        <div class="nama">MUSTAPA</div>
+      </div>
+      <div class="pejabat-card">
+        <div class="jabatan">Kepala Dusun Gersik</div>
+        <div class="nama">SUPARDI</div>
+      </div>
+      <div class="pejabat-card">
+        <div class="jabatan">Kepala Dusun Sintete</div>
+        <div class="nama">HERY WASITO</div>
+      </div>
     </div>
-</div>
+  </section>
 
-<!-- 📞 HALAMAN 5: KONTAK -->
-<div class="halaman" id="kontak">
-    <h1>📞 Hubungi Kami</h1>
-    <div class="card">
-        <p><strong>Alamat:</strong> Jl. Raya Singa Raya, Desa Singa Raya, Kecamatan Semparuk, Kabupaten Sambas, Kalimantan Barat</p>
-        <p><strong>Kode Pos:</strong> 79453</p>
-        <p><strong>Telepon:</strong> 0812-xxxx-xxxx</p>
-        <p><strong>Email:</strong> desasingaraya@gmail.com</p>
+  <!-- Bagian Potensi Desa -->
+  <section id="potensi" class="section-container">
+    <h2 class="page-title">Potensi & Ekonomi Desa</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Pertanian Padi</h3>
+        <p>Sebagai bagian dari wilayah lumbung pangan Kabupaten Sambas, pertanian padi menjadi mata pencaharian utama warga Desa Singa Raya.</p>
+      </div>
+      <div class="card">
+        <h3>Perkebunan & Palawija</h3>
+        <p>Komoditas perkebunan masyarakat lokal mendukung rantai pasok ekonomi pasar di tingkat kecamatan Semparuk dan sekitarnya.</p>
+      </div>
+      <div class="card">
+        <h3>UMKM Desa</h3>
+        <p>Pengembangan industri rumah tangga dan olahan pangan lokal terus didorong melalui pemberdayaan masyarakat dan BUMDes.</p>
+      </div>
     </div>
-</div>
+  </section>
 
-<!-- 🦶 KAKI HALAMAN -->
-<footer>
-    &copy; 2026 Desa Singa Raya - Semua Hak Dilindungi
-</footer>
+  <!-- Bagian Kontak -->
+  <section id="kontak" class="section-container">
+    <h2 class="page-title">Hubungi Kantor Desa</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Alamat Kantor Desa</h3>
+        <p><strong>Alamat:</strong> Jl. Raya Singa Raya, Kec. Semparuk, Kab. Sambas, Kalimantan Barat, Kode Pos 79453.</p>
+        <p><strong>Jam Kerja:</strong> Senin – Jumat (08.00 – 15.00 WIB)</p>
+      </div>
+      <div class="card">
+        <h3>Layanan Publik</h3>
+        <p>Untuk kepengurusan administrasi kependudukan (Surat Pengantar, SKTM, dll.), warga dapat langsung mengunjungi Kantor Desa pada jam operasional kerja.</p>
+      </div>
+    </div>
+  </section>
 
-<!-- ⚙️ SCRIPT GANTI HALAMAN -->
-<script>
-function tampilHalaman(id) {
-    let semua = document.querySelectorAll('.halaman');
-    for(let i=0; i<semua.length; i++){
-        semua[i].style.display = 'none';
-    }
-    document.getElementById(id).style.display = 'block';
-}
-</script>
+  <!-- Bagian Galeri Foto -->
+  <section id="poto" class="section-container">
+    <h2 class="page-title">Galeri Desa</h2>
+    <div class="gallery-content">
+      <h3>Inilah Pemandangan Desa Singa Raya</h3>
+      <img src="desa-singaraya.jpg" alt="pemandangan desa singaraya" width="300">
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; Pemerintah Desa Singa Raya, Kecamatan Semparuk, Kabupaten Sambas.</p>
+  </footer>
 
 </body>
-</html>
-
-        
+            </html>
