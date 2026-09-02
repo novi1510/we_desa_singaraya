@@ -1,1 +1,115 @@
 
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desa Singa Raya</title>
+    <style>
+        * {margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif;}
+        body {background: #f0f8f0; color: #333;}
+        
+        /* Tombol Halaman */
+        .nav {background: #2d6a4f; padding: 15px; text-align: center;}
+        .nav a {display: inline-block; color: white; text-decoration: none; padding: 10px 15px; margin: 5px; background: #40916c; border-radius: 5px;}
+        .nav a:hover {background: #52b788;}
+
+        /* Isi Halaman */
+        .halaman {padding: 30px; max-width: 800px; margin: auto; display: none;}
+        #beranda {display: block;}
+        
+        h1 {color: #2d6a4f; text-align: center; margin-bottom: 20px;}
+        .card {background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 15px;}
+        footer {background: #2d6a4f; color: white; text-align: center; padding: 15px; margin-top: 30px;}
+    </style>
+</head>
+<body>
+
+<!-- 🧭 MENU NAVIGASI -->
+<div class="nav">
+    <a href="#beranda" onclick="tampilHalaman('beranda')">Beranda</a>
+    <a href="#profil" onclick="tampilHalaman('profil')">Profil Desa</a>
+    <a href="#pemerintahan" onclick="tampilHalaman('pemerintahan')">Pemerintahan</a>
+    <a href="#potensi" onclick="tampilHalaman('potensi')">Potensi Desa</a>
+    <a href="#kontak" onclick="tampilHalaman('kontak')">Kontak</a>
+</div>
+
+<!-- 🏠 HALAMAN 1: BERANDA -->
+<div class="halaman" id="beranda">
+    <h1>🏡 Selamat Datang di Desa Singa Raya</h1>
+    <div class="card">
+        <p style="text-align:center; font-size:18px; line-height:1.8;">
+            Desa Singa Raya terletak di Kecamatan Semparuk, Kabupaten Sambas,<br>
+            Provinsi Kalimantan Barat. Desa kami dikenal dengan lingkungannya<br>
+            yang asri, masyarakatnya ramah, dan kehidupan yang damai.
+        </p>
+    </div>
+</div>
+
+<!-- 📋 HALAMAN 2: PROFIL DESA -->
+<div class="halaman" id="profil">
+    <h1>📋 Profil Desa Singa Raya</h1>
+    <div class="card">
+        <p><strong>Nama Desa:</strong> Singa Raya</p>
+        <p><strong>Kecamatan:</strong> Semparuk</p>
+        <p><strong>Kabupaten:</strong> Sambas</p>
+        <p><strong>Provinsi:</strong> Kalimantan Barat</p>
+        <p><strong>Luas Wilayah:</strong> ± 1.500 Ha</p>
+        <p><strong>Jumlah Penduduk:</strong> ± 2.500 Jiwa</p>
+        <p><strong>Batas Wilayah:</strong> Sebelah utara berbatasan dengan Desa Sejahtera, sebelah selatan berbatasan dengan Sungai Raya</p>
+    </div>
+</div>
+
+<!-- 🏛️ HALAMAN 3: PEMERINTAHAN DESA -->
+<div class="halaman" id="pemerintahan">
+    <h1>🏛️ Pemerintahan Desa</h1>
+    <div class="card">
+        <p><strong>Kepala Desa:</strong> Bpk. Ahmad Surya</p>
+        <p><strong>Sekretaris Desa:</strong> Ibu Siti Aminah</p>
+        <p><strong>Kepala Urusan Pemerintahan:</strong> Bpk. M. Ali</p>
+        <p><strong>Kepala Urusan Kesejahteraan:</strong> Ibu Rina Kartika</p>
+        <p><strong>Alamat Kantor Desa:</strong> Jl. Raya Singa Raya, Desa Singa Raya, Kec. Semparuk, Kab. Sambas</p>
+    </div>
+</div>
+
+<!-- 🌾 HALAMAN 4: POTENSI DESA -->
+<div class="halaman" id="potensi">
+    <h1>🌾 Potensi Desa</h1>
+    <div class="card">
+        <p>✅ <strong>Pertanian:</strong> Padi, Jagung, Ubi Kayu</p>
+        <p>✅ <strong>Perkebunan:</strong> Kelapa Sawit, Karet</p>
+        <p>✅ <strong>Sumber Daya Alam:</strong> Lahan subur dan air yang melimpah</p>
+        <p>✅ <strong>Wisata:</strong> Pemandangan alam yang indah, sungai jernih</p>
+        <p>✅ <strong>Produk Unggulan:</strong> Kerajinan tangan dan hasil bumi segar</p>
+    </div>
+</div>
+
+<!-- 📞 HALAMAN 5: KONTAK -->
+<div class="halaman" id="kontak">
+    <h1>📞 Hubungi Kami</h1>
+    <div class="card">
+        <p><strong>Alamat:</strong> Jl. Raya Singa Raya, Desa Singa Raya, Kecamatan Semparuk, Kabupaten Sambas, Kalimantan Barat</p>
+        <p><strong>Kode Pos:</strong> 79453</p>
+        <p><strong>Telepon:</strong> 0812-xxxx-xxxx</p>
+        <p><strong>Email:</strong> desasingaraya@gmail.com</p>
+    </div>
+</div>
+
+<!-- 🦶 KAKI HALAMAN -->
+<footer>
+    &copy; 2026 Desa Singa Raya - Semua Hak Dilindungi
+</footer>
+
+<!-- ⚙️ SCRIPT GANTI HALAMAN -->
+<script>
+function tampilHalaman(id) {
+    let semua = document.querySelectorAll('.halaman');
+    for(let i=0; i<semua.length; i++){
+        semua[i].style.display = 'none';
+    }
+    document.getElementById(id).style.display = 'block';
+}
+</script>
+
+</body>
+</html>
